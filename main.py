@@ -37,20 +37,22 @@ def update_LEDs():
 
 if __name__ == '__main__':
     while True:
-        print('red on')
-        led_red.value = 1
-        sleep(1)
-        led_red.value = 0
-        sleep(1)
-        print('green on')
-        led_green.value = 1
-        sleep(1)
-        led_green.value = 0
-        sleep(1)
-        print('yellow on')
-        led_green.value = 1
-        led_red.value = 0.5
-        sleep(1)
-        led_green.value = 0
-        led_red.value = 0
-        sleep(1)
+        update_LEDs()
+        sleep(5)
+        # print('red on')
+        # led_red.value = 1
+        # sleep(1)
+        # led_red.value = 0
+        # sleep(1)
+        # print('green on')
+        # led_green.value = 1
+        # sleep(1)
+        # led_green.value = 0
+        # sleep(1)
+        # print('yellow on')
+        # led_green.value = 1
+        # led_red.value = 0.5
+        # sleep(1)
+        # led_green.value = 0
+        # led_red.value = 0
+        # sleep(1)
