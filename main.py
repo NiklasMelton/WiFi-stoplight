@@ -1,10 +1,10 @@
-from gpiozero import LED
+from gpiozero import PMWLED
 from time import sleep
 from subprocess import check_output
 import http.client as httplib
 
-led_red = LED(19)
-led_green = LED(12)
+led_red = PMWLED(19)
+led_green = PMWLED(12)
 # led_blue = LED(13)
 
 def wifi_up():
@@ -24,11 +24,11 @@ def internet_connected():
 def update_LEDs():
     if wifi_up():
         if internet_connected():
-            led_red.off()
-            led_green.on()
+            led_red.value = 0
+            led_green.value = 1
         else:
-            led_green.off()
-            led_red.on()
+            led_green.value = 0
+            led_red.value = 1
     else:
         led_green.on()
         led_red.on()
@@ -38,19 +38,19 @@ def update_LEDs():
 if __name__ == '__main__':
     while True:
         print('red on')
-        led_red.on()
+        led_red.value = 1
         sleep(1)
-        led_red.off()
+        led_red.value = 0
         sleep(1)
         print('green on')
-        led_green.on()
+        led_green.value = 1
         sleep(1)
-        led_green.off()
+        led_green.value = 0
         sleep(1)
         print('yellow on')
-        led_green.on()
-        led_red.on()
+        led_green.value = 1
+        led_red.value = 0.5
         sleep(1)
-        led_green.off()
-        led_red.off()
+        led_green.value = 0
+        led_red.value = 0
         sleep(1)
