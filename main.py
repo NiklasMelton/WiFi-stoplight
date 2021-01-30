@@ -5,7 +5,7 @@ import http.client as httplib
 
 led_red = LED(12)
 led_green = LED(19)
-led_blue = LED(13)
+# led_blue = LED(13)
 
 def wifi_up():
     wifi_ip = check_output(['hostname', '-I'])
@@ -23,7 +23,6 @@ def internet_connected():
 
 def update_LEDs():
     if wifi_up():
-        led_blue.off()
         if internet_connected():
             led_red.off()
             led_green.on()
@@ -31,9 +30,8 @@ def update_LEDs():
             led_green.off()
             led_red.on()
     else:
-        led_green.off()
-        led_red.off()
-        led_blue.on()
+        led_green.on()
+        led_red.on()
 
 
 
@@ -49,8 +47,10 @@ if __name__ == '__main__':
         sleep(1)
         led_green.off()
         sleep(1)
-        print('blue on')
-        led_blue.on()
+        print('yellow on')
+        led_green.on()
+        led_red.on()
         sleep(1)
-        led_blue.off()
+        led_green.off()
+        led_red.off()
         sleep(1)
