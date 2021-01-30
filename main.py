@@ -3,8 +3,8 @@ from time import sleep
 from subprocess import check_output
 import http.client as httplib
 
-led_red = LED(12)
-led_green = LED(19)
+led_red = LED(19)
+led_green = LED(12)
 # led_blue = LED(13)
 
 def wifi_up():
