@@ -1,7 +1,7 @@
 from gpiozero import LED
 from time import sleep
 from subprocess import check_output
-import httplib
+import http.client as httplib
 
 led_red = LED(12)
 led_green = LED(19)
