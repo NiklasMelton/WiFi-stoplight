@@ -1,10 +1,10 @@
-from gpiozero import PMWLED
+from gpiozero import PWMLED
 from time import sleep
 from subprocess import check_output
 import http.client as httplib
 
-led_red = PMWLED(19)
-led_green = PMWLED(12)
+led_red = PWMLED(19)
+led_green = PWMLED(12)
 # led_blue = LED(13)
 
 def wifi_up():
