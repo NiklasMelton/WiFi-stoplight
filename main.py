@@ -4,12 +4,13 @@ from subprocess import check_output
 import http.client as httplib
 import os
 
-global WPS_SEARCH
+global WPS_SEARCH, IS_PULSING
 
 button = Button(13,hold_time=1)
 led_red = PWMLED(19)
 led_green = PWMLED(12)
 WPS_SEARCH = False
+IS_PULSING = False
 # led_blue = LED(13)
 
 def wifi_up():
@@ -27,29 +28,31 @@ def internet_connected():
         return False
 
 def update_LEDs():
-    global WPS_SEARCH
+    global WPS_SEARCH, IS_PULSING
     print('update leds',WPS_SEARCH)
     if wifi_up():
+        IS_PULSING = False
         if internet_connected():
             led_red.value = 0
             led_green.value = 1
         else:
             led_green.value = 0
             led_red.value = 1
-    else:
-        led_green.value = 1
-        led_red.value = 0.75
+    elif not IS_PULSING:
+        led_green.pulse()
+        IS_PULSING = True
 
 def WPS():
     global WPS_SEARCH
     print('WPS')
-    led_red.value = 0
-    led_green.value = 0
+    led_red.off()
+    led_green.off()
+    IS_PULSING  =False
 
     WPS_SEARCH = True
     print('begin')
     os.system("/usr/sbin/wpa_cli -i wlan0 wps_pbc")
-    led_red.pulse(fade_in_time=1, fade_out_time=1,n=60, background=False)
+    led_green.pulse(fade_in_time=1, fade_out_time=1,n=60, background=False)
     # blink(120)
     # sleep(10)
     print('end')
