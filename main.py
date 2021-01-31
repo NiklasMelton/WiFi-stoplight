@@ -16,7 +16,7 @@ IS_PULSING = False
 def wifi_up():
     wifi_ip = check_output(['hostname', '-I']).decode('UTF-8')
     open('/home/pi/hostname.log','a').write(str(wifi_ip))
-    return wifi_ip is not None
+    return '.' in wifi_ip or ':' in wifi_ip
 
 def internet_connected():
     conn = httplib.HTTPConnection("www.google.com", timeout=5)
