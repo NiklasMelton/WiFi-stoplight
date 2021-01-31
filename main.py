@@ -53,6 +53,8 @@ def WPS():
 
 
 if __name__ == '__main__':
+    global WPS_SEARCH
+
     button.when_held = WPS
     while True:
         if not WPS_SEARCH:
