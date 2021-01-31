@@ -1,8 +1,10 @@
-from gpiozero import PWMLED
+from gpiozero import PWMLED, Button
 from time import sleep
 from subprocess import check_output
 import http.client as httplib
+import os
 
+button = Button(4,hold_time=1)
 led_red = PWMLED(19)
 led_green = PWMLED(12)
 # led_blue = LED(13)
@@ -30,12 +32,21 @@ def update_LEDs():
             led_green.value = 0
             led_red.value = 1
     else:
-        led_green.on()
-        led_red.on()
+        led_green.value = 1
+        led_red.value = 0.75
+
+def WPS():
+    led_red.value = 0
+    led_green.value = 0
+    os.system("wpa_cli -i wlan0 wps_pbc")
+    led_red.pulse(n=60, background=False)
+    time.sleep(3)
+
 
 
 
 if __name__ == '__main__':
+    button.when_held = wps
     while True:
         update_LEDs()
         sleep(5)
