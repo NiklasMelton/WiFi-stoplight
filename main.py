@@ -14,8 +14,8 @@ IS_PULSING = False
 # led_blue = LED(13)
 
 def wifi_up():
-    wifi_ip = check_output(['hostname', '-I'])
-    open('/home/pi/hostname.log','a').write(str(wifi_ip).strip())
+    wifi_ip = check_output(['hostname', '-I']).decode('UTF-8')
+    open('/home/pi/hostname.log','a').write(str(wifi_ip))
     return wifi_ip is not None
 
 def internet_connected():
