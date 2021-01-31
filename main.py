@@ -16,7 +16,7 @@ IS_PULSING = False
 def wifi_up():
     wifi_ip = check_output(['hostname', '-I']).decode('UTF-8')
     open('/home/pi/hostname.log','a').write(str(wifi_ip))
-    return '.' in wifi_ip or ':' in wifi_ip
+    return ('.' in wifi_ip)
 
 def internet_connected():
     conn = httplib.HTTPConnection("www.google.com", timeout=5)
@@ -30,7 +30,7 @@ def internet_connected():
 
 def update_LEDs():
     global WPS_SEARCH, IS_PULSING
-    print('update leds',WPS_SEARCH)
+    # print('update leds',WPS_SEARCH)
     if wifi_up():
         IS_PULSING = False
         if internet_connected():
@@ -75,20 +75,3 @@ if __name__ == '__main__':
         if not WPS_SEARCH:
             update_LEDs()
         sleep(5)
-        # print('red on')
-        # led_red.value = 1
-        # sleep(1)
-        # led_red.value = 0
-        # sleep(1)
-        # print('green on')
-        # led_green.value = 1
-        # sleep(1)
-        # led_green.value = 0
-        # sleep(1)
-        # print('yellow on')
-        # led_green.value = 1
-        # led_red.value = 0.5
-        # sleep(1)
-        # led_green.value = 0
-        # led_red.value = 0
-        # sleep(1)
