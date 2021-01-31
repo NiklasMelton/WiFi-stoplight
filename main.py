@@ -43,7 +43,7 @@ def WPS():
 
     WPS_SEARCH = True
     # os.system("/usr/sbin/wpa_cli -i wlan0 wps_pbc")
-    led_red.pulse(fade_in_time=1, fade_out_time=1,n=60, background=False)
+    led_red.pulse(fade_in_time=1, fade_out_time=1,n=5, background=False)
     WPS_SEARCH = False
 
 
