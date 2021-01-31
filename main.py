@@ -4,7 +4,7 @@ from subprocess import check_output
 import http.client as httplib
 import os
 
-button = Button(4,hold_time=1)
+button = Button(13,hold_time=1)
 led_red = PWMLED(19)
 led_green = PWMLED(12)
 # led_blue = LED(13)
@@ -36,6 +36,7 @@ def update_LEDs():
         led_red.value = 0.75
 
 def WPS():
+    print('WPS')
     led_red.value = 0
     led_green.value = 0
     os.system("wpa_cli -i wlan0 wps_pbc")
