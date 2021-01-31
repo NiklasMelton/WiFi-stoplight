@@ -4,6 +4,8 @@ from subprocess import check_output
 import http.client as httplib
 import os
 
+global WPS_SEARCH
+
 button = Button(13,hold_time=1)
 led_red = PWMLED(19)
 led_green = PWMLED(12)
@@ -53,8 +55,6 @@ def WPS():
 
 
 if __name__ == '__main__':
-    global WPS_SEARCH
-
     button.when_held = WPS
     while True:
         if not WPS_SEARCH:
