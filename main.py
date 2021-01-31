@@ -40,7 +40,7 @@ def WPS():
     led_red.value = 0
     led_green.value = 0
     os.system("wpa_cli -i wlan0 wps_pbc")
-    led_red.pulse(n=60, background=False)
+    led_red.pulse(fade_in_time=1, fade_out_time=1,n=60, background=False)
     time.sleep(3)
 
 
