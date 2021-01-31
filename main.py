@@ -40,7 +40,7 @@ def update_LEDs():
             led_green.value = 0
             led_red.value = 1
     elif not IS_PULSING:
-        led_green.pulse()
+        led_red.pulse()
         IS_PULSING = True
 
 def WPS():
