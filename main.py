@@ -56,9 +56,9 @@ def WPS():
 def blink(n=120):
     for i in range(n):
         led_red.on()
-        time.sleep(0.5)
+        sleep(0.5)
         led_red.off()
-        time.sleep(0.5)
+        sleep(0.5)
 
 
 
