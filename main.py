@@ -25,6 +25,7 @@ def internet_connected():
         return False
 
 def update_LEDs():
+    print('update leds')
     if wifi_up():
         if internet_connected():
             led_red.value = 0
@@ -42,8 +43,10 @@ def WPS():
     led_green.value = 0
 
     WPS_SEARCH = True
+    print('begin')
     # os.system("/usr/sbin/wpa_cli -i wlan0 wps_pbc")
     led_red.pulse(fade_in_time=1, fade_out_time=1,n=5, background=False)
+    print('end')
     WPS_SEARCH = False
 
 
