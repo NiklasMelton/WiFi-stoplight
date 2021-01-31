@@ -27,7 +27,7 @@ def internet_connected():
         return False
 
 def update_LEDs():
-    print('update leds')
+    print('update leds',WPS_SEARCH)
     if wifi_up():
         if internet_connected():
             led_red.value = 0
