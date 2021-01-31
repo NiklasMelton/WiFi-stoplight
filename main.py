@@ -46,7 +46,7 @@ def WPS():
 
 
 if __name__ == '__main__':
-    button.when_held = wps
+    button.when_held = WPS
     while True:
         update_LEDs()
         sleep(5)
