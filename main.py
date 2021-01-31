@@ -15,7 +15,7 @@ IS_PULSING = False
 
 def wifi_up():
     wifi_ip = check_output(['hostname', '-I']).decode('UTF-8')
-    open('/home/pi/hostname.log','a').write(str(wifi_ip))
+    # open('/home/pi/hostname.log','a').write(str(wifi_ip))
     return ('.' in wifi_ip)
 
 def internet_connected():
